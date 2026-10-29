@@ -1,0 +1,345 @@
+.root {
+  --chocolate: #3b2418;
+  --cream: #f2e3c6;
+  --orange: #e8892b;
+  --mustard: #d9a21b;
+  --rust: #b5462e;
+  --avocado: #7a8b3a;
+  --groovy: "Fraunces Variable", Georgia, serif;
+
+  min-height: 100vh;
+  overflow-x: clip;
+  background: var(--chocolate);
+  color: var(--cream);
+  font-family: "DM Sans Variable", system-ui, sans-serif;
+  font-size: 1.0625rem;
+  line-height: 1.6;
+}
+
+.root :focus-visible {
+  outline: 3px solid var(--mustard);
+  outline-offset: 4px;
+}
+
+/* Fraunces' soft, wonky settings: the heart of the 70s look. */
+.logo,
+.h1,
+.h2,
+.h2Dark,
+.h3,
+.buyH,
+.quote p {
+  font-family: var(--groovy);
+  font-variation-settings:
+    "SOFT" 100,
+    "WONK" 1;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 24px clamp(16px, 5vw, 56px);
+}
+
+.logo {
+  font-size: 1.75rem;
+  font-weight: 800;
+  font-style: italic;
+  color: var(--mustard);
+}
+
+.est {
+  font-size: 0.875rem;
+  letter-spacing: 0.08em;
+}
+
+/* --- Hero ---------------------------------------------------------------- */
+
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  align-items: center;
+  gap: clamp(24px, 4vw, 64px);
+  padding: 24px clamp(16px, 5vw, 56px) 72px;
+}
+
+.heroArt {
+  position: relative;
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+}
+
+.sunburst {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.jarWrap {
+  position: relative;
+  width: 52%;
+  filter: drop-shadow(0 12px 0 rgb(0 0 0 / 25%));
+}
+
+.jar {
+  width: 100%;
+  height: auto;
+}
+
+.oat {
+  position: absolute;
+  width: 22px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--cream);
+}
+
+.h1 {
+  font-size: clamp(3rem, 8vw, 7rem);
+  font-weight: 900;
+  line-height: 0.95;
+  color: var(--cream);
+  text-shadow:
+    4px 4px 0 var(--orange),
+    8px 8px 0 var(--rust);
+  margin-bottom: 28px;
+}
+
+.lede {
+  max-width: 36ch;
+  font-size: 1.1875rem;
+  margin-bottom: 28px;
+}
+
+.cta {
+  display: inline-block;
+  padding: 16px 36px;
+  border-radius: 999px;
+  background: var(--mustard);
+  color: var(--chocolate);
+  font-family: var(--groovy);
+  font-variation-settings:
+    "SOFT" 100,
+    "WONK" 1;
+  font-size: 1.375rem;
+  font-weight: 800;
+  font-style: italic;
+  text-decoration: none;
+  box-shadow: 0 6px 0 var(--rust);
+  transition:
+    transform 200ms ease,
+    box-shadow 200ms ease;
+}
+
+.cta:hover {
+  transform: translateY(3px);
+  box-shadow: 0 3px 0 var(--rust);
+}
+
+/* --- Rainbow band -------------------------------------------------------- */
+
+.band {
+  display: grid;
+  margin: 24px 0 72px;
+}
+
+.band span {
+  display: block;
+  height: 26px;
+}
+
+/* --- Features ------------------------------------------------------------ */
+
+.features,
+.proof,
+.buy {
+  padding: 48px clamp(16px, 5vw, 56px) 80px;
+}
+
+.h2 {
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 900;
+  font-style: italic;
+  line-height: 1;
+  color: var(--orange);
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.badges {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+  gap: 32px;
+}
+
+.badge {
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  gap: 8px;
+  aspect-ratio: 1;
+  max-width: 300px;
+  margin: 0 auto;
+  padding: 36px;
+  border-radius: 50%;
+  border: 6px double var(--mustard);
+  text-align: center;
+}
+
+.badge:nth-child(2) {
+  border-color: var(--orange);
+}
+
+.badge:nth-child(3) {
+  border-color: var(--avocado);
+}
+
+.h3 {
+  font-size: 1.75rem;
+  font-weight: 800;
+  line-height: 1.05;
+  color: var(--mustard);
+}
+
+/* --- Details: the cream band --------------------------------------------- */
+
+.wave {
+  display: block;
+  width: 100%;
+  height: 48px;
+  margin-bottom: -1px;
+}
+
+.wave + .details {
+  margin-top: 0;
+}
+
+.details {
+  padding: 48px clamp(16px, 5vw, 56px);
+  background: var(--cream);
+  color: var(--chocolate);
+  text-align: center;
+}
+
+.details + .wave {
+  margin-top: -1px;
+}
+
+.h2Dark {
+  font-size: clamp(2.25rem, 5vw, 3.75rem);
+  font-weight: 900;
+  font-style: italic;
+  color: var(--rust);
+  margin-bottom: 28px;
+}
+
+.ingredients {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  max-width: 760px;
+  margin: 0 auto 24px;
+}
+
+.ingredients li {
+  padding: 8px 18px;
+  border-radius: 999px;
+  border: 2px solid var(--chocolate);
+  font-weight: 600;
+}
+
+.ingredients li:nth-child(4n + 1) {
+  background: #f5c97a;
+}
+
+.ingredients li:nth-child(4n + 3) {
+  background: #d8dfb3;
+}
+
+.note {
+  font-size: 0.9375rem;
+}
+
+/* --- Proof & buy --------------------------------------------------------- */
+
+.proof {
+  display: grid;
+  place-items: center;
+}
+
+.quote {
+  max-width: 720px;
+  text-align: center;
+}
+
+.quote p {
+  font-size: clamp(1.75rem, 4vw, 3rem);
+  font-style: italic;
+  font-weight: 600;
+  line-height: 1.15;
+  margin-bottom: 16px;
+}
+
+.quote footer {
+  color: var(--mustard);
+  font-weight: 600;
+}
+
+.buy {
+  display: grid;
+  justify-items: center;
+  text-align: center;
+  background: #9e3b26; /* a shade darker than rust so cream text passes 4.5:1 */
+}
+
+.buyH {
+  font-size: clamp(2.75rem, 7vw, 5.5rem);
+  font-weight: 900;
+  font-style: italic;
+  line-height: 1;
+  text-shadow: 4px 4px 0 var(--chocolate);
+  margin-bottom: 20px;
+}
+
+.buy .cta {
+  box-shadow: 0 6px 0 var(--chocolate);
+}
+
+/* --- Footer -------------------------------------------------------------- */
+
+.footer {
+  padding-bottom: 120px; /* clear of the shell's nav bar */
+  text-align: center;
+  font-size: 0.9375rem;
+}
+
+.footStripes {
+  display: grid;
+  margin-bottom: 24px;
+}
+
+.footStripes span {
+  height: 10px;
+}
+
+@media (max-width: 760px) {
+  .hero {
+    grid-template-columns: 1fr;
+  }
+
+  .heroArt {
+    max-width: 340px;
+    width: 100%;
+    margin: 0 auto;
+  }
+}

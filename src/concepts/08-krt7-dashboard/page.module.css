@@ -1,0 +1,480 @@
+.root {
+  --void: #0b0d10;
+  --panel: #14181d;
+  --line: #2a3038;
+  --text: #e6e8eb;
+  --dim: #8a939e;
+  --signal: #00e0b8;
+  --warn: #ffb000;
+  --mono: "JetBrains Mono Variable", ui-monospace, monospace;
+
+  min-height: 100vh;
+  background: var(--void);
+  color: var(--text);
+  font-family: "Inter Variable", system-ui, sans-serif;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+}
+
+.root :focus-visible {
+  outline: 2px solid var(--signal);
+  outline-offset: 2px;
+}
+
+.dim {
+  color: var(--dim);
+}
+
+.signal {
+  color: var(--signal);
+}
+
+.warn {
+  color: var(--warn);
+}
+
+/* --- Top bar ------------------------------------------------------------- */
+
+.top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 24px;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--line);
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+}
+
+.brand {
+  font-weight: 800;
+  font-size: 0.9375rem;
+}
+
+.status {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--signal);
+}
+
+.led {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--signal);
+  box-shadow: 0 0 8px var(--signal);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  50% {
+    opacity: 0.35;
+  }
+}
+
+/* --- Panel grid ---------------------------------------------------------- */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 1px;
+  background: var(--line); /* the 1px gaps read as hairlines between panels */
+  border-bottom: 1px solid var(--line);
+}
+
+.panel {
+  grid-column: span 6;
+  min-width: 0;
+  padding: 16px;
+  background: var(--panel);
+}
+
+.label {
+  margin-bottom: 14px;
+  font-family: var(--mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
+  color: var(--dim);
+}
+
+.hero {
+  grid-column: span 7;
+  display: grid;
+  align-content: space-between;
+  gap: 24px;
+}
+
+.diagramPanel {
+  grid-column: span 5;
+}
+
+.chartPanel {
+  grid-column: span 8;
+}
+
+.readoutPanel {
+  grid-column: span 4;
+}
+
+.half {
+  grid-column: span 6;
+}
+
+.wide {
+  grid-column: span 12;
+}
+
+/* --- Hero ---------------------------------------------------------------- */
+
+.h1 {
+  font-family: var(--mono);
+  font-size: clamp(4rem, 12vw, 10rem);
+  font-weight: 800;
+  line-height: 0.9;
+  letter-spacing: -0.06em;
+}
+
+.lede {
+  max-width: 52ch;
+  font-size: 1.0625rem;
+}
+
+.heroActions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.cta {
+  display: inline-block;
+  padding: 12px 18px;
+  background: var(--signal);
+  color: var(--void);
+  font-family: var(--mono);
+  font-weight: 700;
+  font-size: 0.875rem;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+}
+
+.cta:hover {
+  background: var(--text);
+}
+
+.price {
+  font-family: var(--mono);
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.diagram {
+  width: 100%;
+  max-width: 360px;
+  margin: 0 auto;
+  display: block;
+}
+
+.lineArt * {
+  fill: none;
+  stroke: var(--text);
+  stroke-width: 1.5;
+}
+
+.callouts line {
+  stroke: var(--signal);
+  stroke-width: 1;
+}
+
+.callouts text {
+  fill: var(--signal);
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.06em;
+}
+
+/* --- Chart --------------------------------------------------------------- */
+
+.chartFig {
+  margin: 0;
+}
+
+.chart {
+  width: 100%;
+  height: auto;
+  cursor: crosshair;
+  touch-action: none;
+}
+
+.chart .chartGrid {
+  stroke: var(--line);
+  stroke-width: 1;
+}
+
+.chart .gridZero {
+  stroke: var(--dim);
+  stroke-width: 1;
+  stroke-dasharray: 3 3;
+}
+
+.axis {
+  fill: var(--dim);
+  font-family: var(--mono);
+  font-size: 9px;
+}
+
+.curve {
+  fill: none;
+  stroke: var(--signal);
+  stroke-width: 2;
+}
+
+.crosshair {
+  stroke: var(--warn);
+  stroke-width: 1;
+}
+
+.dot {
+  fill: var(--warn);
+}
+
+.readout {
+  display: flex;
+  gap: 20px;
+  margin-top: 8px;
+  font-family: var(--mono);
+  font-size: 0.8125rem;
+  font-variant-numeric: tabular-nums;
+  min-height: 1.5em;
+}
+
+/* --- Live readout -------------------------------------------------------- */
+
+.waveBox {
+  overflow: hidden;
+  height: 60px;
+  margin-bottom: 16px;
+  border: 1px solid var(--line);
+}
+
+.wave {
+  display: block;
+  width: 200%;
+  max-width: none;
+  height: 60px;
+}
+
+.wave path {
+  fill: none;
+  stroke: var(--signal);
+  stroke-width: 1.5;
+}
+
+.readouts {
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+}
+
+.readouts div {
+  padding: 10px;
+  background: var(--panel);
+}
+
+.readouts dt {
+  font-family: var(--mono);
+  font-size: 0.625rem;
+  letter-spacing: 0.08em;
+  color: var(--dim);
+}
+
+.readouts dd {
+  margin: 0;
+  font-family: var(--mono);
+  font-size: 1.5rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.unit {
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: var(--dim);
+}
+
+/* --- Tabs & tables ------------------------------------------------------- */
+
+.tabs {
+  display: flex;
+  gap: 4px;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 12px;
+}
+
+.tab {
+  position: relative;
+  padding: 8px 12px;
+  border: 0;
+  background: none;
+  color: var(--dim);
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+}
+
+.tab[aria-selected="true"] {
+  color: var(--text);
+}
+
+.underline {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 2px;
+  background: var(--signal);
+}
+
+.specList {
+  margin: 0;
+}
+
+.specList div {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 12px;
+  padding: 8px 0;
+  border-bottom: 1px dashed var(--line);
+}
+
+.specList dt {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  color: var(--dim);
+  text-transform: uppercase;
+}
+
+.specList dd {
+  margin: 0;
+}
+
+.tableWrap {
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--mono);
+  font-size: 0.8125rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.table th,
+.table td {
+  padding: 8px 10px 8px 0;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  white-space: nowrap;
+}
+
+.table thead th {
+  font-size: 0.6875rem;
+  letter-spacing: 0.06em;
+  color: var(--dim);
+}
+
+.table thead th.signal {
+  color: var(--signal);
+}
+
+.table tbody th {
+  font-weight: 400;
+  color: var(--dim);
+}
+
+/* --- Log & configure ----------------------------------------------------- */
+
+.log {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+  font-family: var(--mono);
+  font-size: 0.8125rem;
+}
+
+.configure {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px 32px;
+}
+
+.fieldset {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-family: var(--mono);
+  font-size: 0.8125rem;
+}
+
+.fieldset legend {
+  float: left;
+  margin-right: 8px;
+}
+
+.radio {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.radio input {
+  accent-color: var(--signal);
+}
+
+.summary {
+  font-family: var(--mono);
+  font-size: 0.8125rem;
+  color: var(--dim);
+  flex: 1;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 12px 16px 120px; /* clear of the shell's nav bar */
+  font-family: var(--mono);
+  font-size: 0.6875rem;
+  color: var(--dim);
+}
+
+/* --- Narrower screens ---------------------------------------------------- */
+
+@media (max-width: 960px) {
+  .hero,
+  .diagramPanel,
+  .chartPanel,
+  .readoutPanel,
+  .half {
+    grid-column: span 12;
+  }
+
+  .specList div {
+    grid-template-columns: 120px 1fr;
+  }
+}
