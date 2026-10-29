@@ -1,0 +1,92 @@
+/* A dark glass pill: reads on light and dark concepts alike. */
+.bar {
+  position: fixed;
+  z-index: 1000;
+  left: 50%;
+  bottom: max(16px, env(safe-area-inset-bottom));
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  max-width: calc(100vw - 32px);
+  padding: 4px;
+  border: 1px solid rgb(255 255 255 / 14%);
+  border-radius: 999px;
+  background: var(--shell-glass);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 8px 30px rgb(0 0 0 / 25%);
+  color: #fff;
+  font-family: var(--shell-font);
+  font-size: 0.875rem;
+  line-height: 1;
+}
+
+.arrow,
+.home,
+.about {
+  display: inline-flex;
+  align-items: center;
+  height: 40px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.arrow {
+  justify-content: center;
+  width: 40px;
+  flex: none;
+}
+
+.home {
+  gap: 8px;
+  padding: 0 10px;
+  min-width: 0;
+}
+
+.count {
+  font-variant-numeric: tabular-nums;
+  opacity: 0.7;
+}
+
+.name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: 600;
+}
+
+.about {
+  margin-left: 4px;
+  padding: 0 14px;
+  background: #fff;
+  color: #141414;
+  font-weight: 600;
+  flex: none;
+}
+
+.arrow:hover,
+.home:hover {
+  background: rgb(255 255 255 / 12%);
+}
+
+.about:hover {
+  background: #e9e9e9;
+}
+
+.arrow:focus-visible,
+.home:focus-visible,
+.about:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+
+@media (max-width: 480px) {
+  .name {
+    display: none;
+  }
+}

@@ -83,8 +83,7 @@ src/
     ConceptViewer.tsx        loads a concept, page transition, keyboard nav
     NavBar.tsx               prev / next / back to gallery, "3 of 12"
     StyleCard.tsx            the "about this style" panel
-    TagChip.tsx              tag with glossary definition on hover/focus
-    shell.module.css         neutral UI that sits above every concept
+    *.module.css             neutral UI that sits above every concept
   concepts/
     registry.ts              discovers concepts automatically (see below)
     01-orchard-swiss/
@@ -94,6 +93,7 @@ src/
       assets/                SVGs etc.
     02-squeeze-y2k/
     ...
+    types.ts                 ConceptMeta, the typed meta.ts format
   content/
     glossary.ts              visual + UX terms and definitions, typed
 ```
@@ -132,7 +132,7 @@ No central list to edit.
 
 ### Tooling and deploy
 
-- ESLint + Prettier, `tsc --noEmit` in CI.
+- oxlint + Prettier; `npm run build` type-checks with `tsc -b` before bundling.
 - **Cloudflare Pages** builds and deploys: `main` goes to production, and every PR
   branch gets its own preview URL.
 - Cloudflare settings: framework preset *Vite* (or none), build command `npm run build`,

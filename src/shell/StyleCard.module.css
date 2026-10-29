@@ -1,0 +1,252 @@
+/* The dialog fills the viewport; the panel inside is the visible sheet. */
+.dialog {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  font-family: var(--shell-font);
+  color: var(--shell-ink);
+}
+
+.dialog::backdrop {
+  background: rgb(0 0 0 / 35%);
+}
+
+.dialog[open] .panel {
+  animation: slide-in 260ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.dialog[open]::backdrop {
+  animation: fade-in 260ms ease-out;
+}
+
+.panel {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  bottom: 12px;
+  width: min(420px, calc(100% - 24px));
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 28px 28px 36px;
+  border-radius: 18px;
+  background: var(--shell-surface);
+  box-shadow: 0 20px 60px rgb(0 0 0 / 30%);
+  font-size: 0.9375rem;
+  line-height: 1.55;
+}
+
+.head {
+  position: relative;
+  padding-right: 40px;
+}
+
+.kicker {
+  font-size: 0.8125rem;
+  color: var(--shell-dim);
+}
+
+.title {
+  margin-top: 4px;
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+
+.close {
+  position: absolute;
+  top: -6px;
+  right: -8px;
+  width: 36px;
+  height: 36px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--shell-bg);
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.description {
+  margin-top: 16px;
+}
+
+.section {
+  margin-top: 24px;
+}
+
+.sectionTitle {
+  margin-bottom: 8px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--shell-dim);
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.tag {
+  padding: 6px 12px;
+  border: 1px solid var(--shell-line);
+  border-radius: 999px;
+  background: var(--shell-surface);
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.tag:hover {
+  border-color: var(--shell-ink);
+}
+
+.tag[aria-pressed="true"] {
+  border-color: var(--shell-ink);
+  background: var(--shell-ink);
+  color: var(--shell-surface);
+}
+
+.definition {
+  margin-top: 10px;
+  min-height: 1.55em;
+  font-size: 0.875rem;
+}
+
+.hint {
+  color: var(--shell-dim);
+}
+
+.list {
+  display: grid;
+  gap: 6px;
+  padding-left: 18px;
+}
+
+.palette {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: 4px;
+}
+
+.swatch {
+  display: grid;
+  grid-template-columns: 28px 1fr auto;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 4px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  text-align: left;
+  cursor: copy;
+}
+
+.swatch:hover {
+  background: var(--shell-bg);
+}
+
+.chip {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  box-shadow: inset 0 0 0 1px rgb(0 0 0 / 12%);
+}
+
+.hex {
+  font-variant-numeric: tabular-nums;
+  font-size: 0.8125rem;
+  color: var(--shell-dim);
+}
+
+.fonts {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+}
+
+.fonts li {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.sample {
+  min-width: 2.2em;
+  font-size: 1.75rem;
+  line-height: 1;
+}
+
+.close:focus-visible,
+.tag:focus-visible,
+.swatch:focus-visible {
+  outline: 2px solid var(--shell-focus);
+  outline-offset: 2px;
+}
+
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* Phones: a bottom sheet instead of a side panel. */
+@media (max-width: 600px) {
+  .panel {
+    top: auto;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    max-height: 85vh;
+    border-radius: 18px 18px 0 0;
+    padding-bottom: max(36px, env(safe-area-inset-bottom));
+  }
+
+  .dialog[open] .panel {
+    animation-name: slide-up;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dialog[open] .panel,
+  .dialog[open]::backdrop {
+    animation: none;
+  }
+}
+
+@keyframes slide-in {
+  from {
+    transform: translateX(24px);
+    opacity: 0;
+  }
+}
+
+@keyframes slide-up {
+  from {
+    transform: translateY(40px);
+    opacity: 0;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}
