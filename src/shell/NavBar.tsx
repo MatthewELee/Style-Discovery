@@ -1,5 +1,6 @@
 import { Link } from "react-router";
 import { concepts, type Concept } from "../concepts/registry";
+import { galleryPath } from "./galleryFilter";
 import styles from "./NavBar.module.css";
 
 type Props = {
@@ -22,7 +23,7 @@ export default function NavBar({ concept, prev, next, onOpenCard }: Props) {
         <Chevron flip />
       </Link>
 
-      <Link to="/" className={styles.home} title="All concepts (Esc)">
+      <Link to={galleryPath()} className={styles.home} title="All concepts (Esc)">
         <span className={styles.count}>
           {concept.number} / {String(concepts.length).padStart(2, "0")}
         </span>

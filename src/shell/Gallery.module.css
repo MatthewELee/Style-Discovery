@@ -100,3 +100,104 @@
   font-size: 0.875rem;
   color: var(--shell-dim);
 }
+
+.filters {
+  display: grid;
+  gap: 10px;
+  margin-bottom: 28px;
+}
+
+.group {
+  display: grid;
+  grid-template-columns: 112px 1fr;
+  align-items: baseline;
+  gap: 6px;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.groupLabel {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--shell-dim);
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  border: 1px solid var(--shell-line);
+  border-radius: 999px;
+  background: var(--shell-surface);
+  color: var(--shell-ink);
+  font: inherit;
+  font-size: 0.8125rem;
+  cursor: pointer;
+  transition:
+    background 120ms,
+    border-color 120ms;
+}
+
+.chip:hover:not(:disabled) {
+  border-color: var(--shell-dim);
+}
+
+.chip[aria-pressed="true"] {
+  border-color: var(--shell-ink);
+  background: var(--shell-ink);
+  color: var(--shell-surface);
+}
+
+.chip:disabled {
+  cursor: default;
+  opacity: 0.4;
+}
+
+.chip:focus-visible,
+.clear:focus-visible {
+  outline: 3px solid var(--shell-focus);
+  outline-offset: 2px;
+}
+
+.chipCount {
+  font-size: 0.75rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--shell-dim);
+}
+
+.status {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 28px;
+  margin-top: 4px;
+  font-size: 0.875rem;
+  color: var(--shell-dim);
+}
+
+.clear {
+  padding: 2px 4px;
+  border: 0;
+  background: none;
+  color: var(--shell-ink);
+  font: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+
+.empty {
+  padding: 48px 0;
+  color: var(--shell-dim);
+}
+
+@media (max-width: 560px) {
+  .group {
+    grid-template-columns: 1fr;
+  }
+}

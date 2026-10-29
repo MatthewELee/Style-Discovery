@@ -2,6 +2,7 @@ import { AnimatePresence, motion } from "motion/react";
 import { Suspense, useEffect, useState } from "react";
 import { Navigate, useNavigate, useParams } from "react-router";
 import { conceptIndex, concepts, neighbour } from "../concepts/registry";
+import { galleryPath } from "./galleryFilter";
 import NavBar from "./NavBar";
 import StyleCard from "./StyleCard";
 
@@ -34,7 +35,7 @@ export default function ConceptViewer() {
       if (isTyping(e.target)) return;
       if (e.key === "ArrowLeft") navigate(`/c/${neighbour(index, -1).slug}`);
       else if (e.key === "ArrowRight") navigate(`/c/${neighbour(index, 1).slug}`);
-      else if (e.key === "Escape") navigate("/");
+      else if (e.key === "Escape") navigate(galleryPath());
     }
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);

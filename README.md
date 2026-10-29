@@ -6,6 +6,8 @@ to learn web design: every page carries a small **style card** that names the st
 tags it with design and UX vocabulary, and explains how the look is achieved.
 
 Click through the concepts one after another, or jump to any of them from the gallery.
+The gallery can be filtered by visual and UX tags and by the design axes (density, color
+energy, value, motion); the filter lives in the URL, so a filtered view can be shared.
 
 ## Running it
 
