@@ -1,0 +1,433 @@
+.root {
+  --lime: #c6ff00;
+  --pink: #ff3da5;
+  --aqua: #3dd9ff;
+  --violet: #7b2cff;
+  --chrome: linear-gradient(180deg, #ffffff 0%, #c9ccd8 45%, #8d93aa 55%, #e8e8f0 100%);
+  --bg: #fff6fb;
+  --ink: #2a0a4a;
+  --pop: 5px 5px 0 var(--ink);
+
+  min-height: 100vh;
+  overflow-x: clip;
+  background-color: var(--bg);
+  background-image: radial-gradient(rgb(255 61 165 / 22%) 2px, transparent 2.5px);
+  background-size: 22px 22px;
+  color: var(--ink);
+  font-family: "Space Grotesk Variable", system-ui, sans-serif;
+  font-size: 1.0625rem;
+  line-height: 1.5;
+}
+
+.root :focus-visible {
+  outline: 3px dashed var(--violet);
+  outline-offset: 4px;
+}
+
+/* --- Marquee & top ------------------------------------------------------- */
+
+.marquee {
+  overflow: hidden;
+  border-bottom: 3px solid var(--ink);
+  background: var(--lime);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+.marqueeTrack {
+  display: flex;
+  width: max-content;
+  padding: 8px 0;
+}
+
+.marqueeTrack span {
+  padding-right: 2em;
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px clamp(16px, 4vw, 40px);
+}
+
+.logo {
+  font-family: "Rubik Bubbles", system-ui;
+  font-size: 1.75rem;
+  color: var(--pink);
+  -webkit-text-stroke: 1.5px var(--ink);
+}
+
+.badge {
+  padding: 6px 12px;
+  border: 3px solid var(--ink);
+  border-radius: 999px;
+  background: var(--aqua);
+  font-weight: 700;
+  font-size: 0.875rem;
+  transform: rotate(4deg);
+  box-shadow: 3px 3px 0 var(--ink);
+}
+
+/* --- Hero ---------------------------------------------------------------- */
+
+.hero {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  align-items: center;
+  gap: 24px;
+  padding: 24px clamp(16px, 4vw, 40px) 64px;
+}
+
+.starA,
+.starB {
+  position: absolute;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.starA {
+  width: clamp(140px, 22vw, 280px);
+  top: -10px;
+  right: 6%;
+}
+
+.starB {
+  width: clamp(90px, 12vw, 160px);
+  bottom: 20px;
+  left: 42%;
+}
+
+.heroText {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 20px;
+  justify-items: start;
+}
+
+.h1 {
+  font-family: "Rubik Bubbles", system-ui;
+  font-weight: 400;
+  font-size: clamp(3.5rem, 13vw, 11rem);
+  line-height: 0.95;
+  background: var(--chrome);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-stroke: 3px var(--ink);
+  filter: drop-shadow(6px 6px 0 var(--pink));
+}
+
+.lede {
+  max-width: 34ch;
+  padding: 14px 18px;
+  border: 3px solid var(--ink);
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: var(--pop);
+  font-weight: 500;
+}
+
+.cta {
+  display: inline-block;
+  padding: 16px 28px;
+  border: 3px solid var(--ink);
+  border-radius: 999px;
+  background: var(--pink);
+  color: #fff;
+  font-weight: 800;
+  font-size: 1.25rem;
+  text-decoration: none;
+  text-shadow: 2px 2px 0 var(--ink);
+  box-shadow: var(--pop);
+}
+
+.boxWrap {
+  position: relative;
+  z-index: 1;
+  justify-self: center;
+  display: grid;
+  justify-items: center;
+  padding-top: 70px;
+}
+
+.boxButton {
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  filter: drop-shadow(8px 8px 0 var(--ink));
+}
+
+.box {
+  width: clamp(150px, 20vw, 220px);
+  height: auto;
+}
+
+.straw {
+  position: absolute;
+  top: 0;
+  left: 58%;
+  width: 14px;
+  height: 120px;
+  border: 3px solid var(--ink);
+  border-radius: 7px;
+  background: repeating-linear-gradient(-45deg, #fff 0 8px, var(--aqua) 8px 16px);
+  transform-origin: 50% 100%;
+  z-index: -1;
+}
+
+.boxCount {
+  margin-top: 16px;
+  padding: 6px 14px;
+  border: 3px solid var(--ink);
+  border-radius: 999px;
+  background: var(--lime);
+  font-weight: 700;
+  font-size: 0.9375rem;
+}
+
+/* --- Stickers ------------------------------------------------------------ */
+
+.stickers,
+.features,
+.details,
+.buy {
+  padding: 56px clamp(16px, 4vw, 40px);
+  border-top: 3px solid var(--ink);
+}
+
+.h2 {
+  font-family: "Rubik Bubbles", system-ui;
+  font-weight: 400;
+  font-size: clamp(2.25rem, 6vw, 4rem);
+  line-height: 1;
+  color: var(--violet);
+  -webkit-text-stroke: 2px var(--ink);
+  margin-bottom: 12px;
+}
+
+.hint {
+  font-weight: 500;
+  margin-bottom: 28px;
+}
+
+.stickerRow {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+}
+
+.sticker {
+  position: relative;
+  padding: 18px 22px;
+  border: 3px solid var(--ink);
+  border-radius: 999px 999px 999px 24px;
+  color: var(--ink);
+  font-weight: 800;
+  font-size: 1.125rem;
+  cursor: grab;
+  touch-action: none;
+  box-shadow: var(--pop);
+}
+
+.sticker:nth-child(odd) {
+  border-radius: 24px 999px 999px 999px;
+}
+
+.sticker:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.pack {
+  list-style: none;
+  padding: 0;
+  margin-top: 28px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  min-height: 40px;
+}
+
+.pack li {
+  padding: 6px 12px;
+  border: 2px solid var(--ink);
+  border-radius: 8px;
+  background: #fff;
+  font-weight: 700;
+  font-size: 0.875rem;
+}
+
+.reset {
+  margin-top: 12px;
+  border: 0;
+  background: none;
+  font-weight: 700;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* --- Features ------------------------------------------------------------ */
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+  gap: 28px;
+  margin-top: 24px;
+}
+
+.card {
+  padding: 24px;
+  border: 3px solid var(--ink);
+  border-radius: 22px;
+  box-shadow: var(--pop);
+}
+
+.card:nth-child(1) {
+  background: var(--lime);
+}
+
+.card:nth-child(2) {
+  background: var(--aqua);
+}
+
+.card:nth-child(3) {
+  background: #ffc2e2;
+}
+
+.h3 {
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+/* --- Details ------------------------------------------------------------- */
+
+.details {
+  background: var(--violet);
+  color: #fff;
+}
+
+.details .h2 {
+  color: var(--lime);
+}
+
+.facts {
+  margin: 24px 0 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 160px), 1fr));
+  gap: 16px;
+}
+
+.facts div {
+  padding: 20px;
+  border: 3px solid var(--ink);
+  border-radius: 50%;
+  aspect-ratio: 1;
+  display: grid;
+  place-content: center;
+  text-align: center;
+  background: var(--chrome);
+  color: var(--ink);
+  box-shadow: var(--pop);
+}
+
+.facts dt {
+  font-weight: 600;
+}
+
+.facts dd {
+  margin: 0;
+  font-size: 1.75rem;
+  font-weight: 800;
+}
+
+/* --- Proof --------------------------------------------------------------- */
+
+.proof {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px;
+  justify-content: center;
+  padding: 64px clamp(16px, 4vw, 40px);
+  border-top: 3px solid var(--ink);
+}
+
+.bubbleA,
+.bubbleB {
+  position: relative;
+  max-width: 340px;
+  padding: 22px 26px;
+  border: 3px solid var(--ink);
+  border-radius: 28px;
+  background: #fff;
+  font-size: 1.25rem;
+  font-weight: 600;
+  box-shadow: var(--pop);
+}
+
+.bubbleA {
+  transform: rotate(-3deg);
+}
+
+.bubbleB {
+  transform: rotate(2deg) translateY(30px);
+  background: var(--lime);
+}
+
+.bubbleA footer,
+.bubbleB footer {
+  margin-top: 10px;
+  font-size: 0.9375rem;
+  font-weight: 500;
+}
+
+/* --- Buy ----------------------------------------------------------------- */
+
+.buy {
+  display: grid;
+  justify-items: center;
+  gap: 24px;
+  text-align: center;
+  background: var(--aqua);
+}
+
+.buyH {
+  font-family: "Rubik Bubbles", system-ui;
+  font-weight: 400;
+  font-size: clamp(3rem, 10vw, 7rem);
+  line-height: 1;
+  color: #fff;
+  -webkit-text-stroke: 3px var(--ink);
+  filter: drop-shadow(5px 5px 0 var(--ink));
+}
+
+.footer {
+  padding: 24px clamp(16px, 4vw, 40px) 120px; /* clear of the shell's nav bar */
+  border-top: 3px solid var(--ink);
+  background: var(--ink);
+  color: #fff;
+  font-weight: 600;
+}
+
+@media (max-width: 760px) {
+  .hero {
+    grid-template-columns: 1fr;
+  }
+
+  .starB {
+    left: auto;
+    right: 4%;
+    bottom: 40%;
+  }
+
+  .bubbleB {
+    transform: rotate(2deg);
+  }
+}

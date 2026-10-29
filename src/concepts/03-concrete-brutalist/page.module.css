@@ -1,0 +1,379 @@
+.root {
+  --white: #ffffff;
+  --black: #000000;
+  --concrete: #c8c8c8;
+  --orange: #ff4f00;
+  --rule: 4px solid var(--black);
+
+  min-height: 100vh;
+  overflow-x: clip;
+  background: var(--white);
+  color: var(--black);
+  font-family: "Space Mono", ui-monospace, monospace;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+}
+
+.root a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+
+.root a:hover {
+  background: var(--black);
+  color: var(--white);
+}
+
+.root :focus-visible {
+  outline: 4px solid var(--orange);
+  outline-offset: 0;
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+}
+
+/* --- Ticker: jumps, never glides ----------------------------------------- */
+
+.ticker {
+  overflow: hidden;
+  border-bottom: var(--rule);
+  background: var(--black);
+  color: var(--white);
+  white-space: nowrap;
+  font-weight: 700;
+}
+
+.tickerTrack {
+  display: flex;
+  width: max-content;
+  padding: 6px 0;
+  animation: tick 24s steps(48) infinite;
+}
+
+@keyframes tick {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tickerTrack {
+    animation: none;
+  }
+}
+
+/* --- Header -------------------------------------------------------------- */
+
+.header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px 24px;
+  padding: 10px 16px;
+  border-bottom: var(--rule);
+}
+
+.path {
+  color: #555;
+}
+
+.nav {
+  display: flex;
+  gap: 16px;
+  font-weight: 700;
+}
+
+/* --- Hero: a deliberately broken grid ------------------------------------ */
+
+.hero {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  border-bottom: var(--rule);
+}
+
+.heroTitle {
+  padding: 32px 16px 40px;
+  border-right: var(--rule);
+}
+
+.h1 {
+  font-family: "Times New Roman", Times, serif;
+  font-size: clamp(3.25rem, 8.5vw, 8rem);
+  font-weight: 700;
+  line-height: 0.85;
+  letter-spacing: -0.02em;
+  word-break: break-word;
+}
+
+.sub {
+  max-width: 46ch;
+  margin-top: 24px;
+  margin-left: 18%; /* off the grid on purpose */
+}
+
+.cursor {
+  animation: blink 1s steps(1) infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+.heroDeck {
+  display: grid;
+  justify-items: center;
+  align-content: center;
+  gap: 8px;
+  padding: 24px 16px;
+  margin-top: 48px; /* hangs lower than its neighbours */
+  border-top: var(--rule);
+  border-right: var(--rule);
+  background: var(--concrete);
+}
+
+.deck {
+  width: min(120px, 60%);
+  height: auto;
+}
+
+.figCap {
+  font-size: 0.75rem;
+}
+
+.heroPrice {
+  display: grid;
+  align-content: start;
+  padding: 16px;
+  margin-left: -24px; /* overlaps the deck column */
+  margin-top: -4px;
+  position: relative;
+}
+
+.priceLabel {
+  font-weight: 700;
+}
+
+.price {
+  font-family: "Times New Roman", Times, serif;
+  font-size: clamp(4rem, 9vw, 8rem);
+  line-height: 1;
+  font-weight: 700;
+  background: var(--orange);
+  padding: 0 8px;
+  border: var(--rule);
+  justify-self: start;
+}
+
+.buyLink {
+  margin-top: 16px;
+  font-weight: 700;
+  font-size: 1.25rem;
+}
+
+/* --- Sections ------------------------------------------------------------ */
+
+.features,
+.specs,
+.reviews {
+  border-bottom: var(--rule);
+  padding: 24px 16px 40px;
+}
+
+.h2 {
+  display: inline-block;
+  margin-bottom: 20px;
+  padding: 2px 8px;
+  background: var(--black);
+  color: var(--white);
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.factList {
+  list-style: decimal-leading-zero;
+  padding-left: 3.5ch;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+  gap: 0;
+}
+
+.factList li {
+  padding: 16px;
+  border: var(--rule);
+  margin: 0 -4px -4px 0; /* collapse the borders */
+  font-weight: 700;
+}
+
+.factList li:nth-child(2) {
+  transform: translateY(16px);
+  background: var(--concrete);
+}
+
+.factList h3 {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 1.5rem;
+  line-height: 1.05;
+  margin-bottom: 8px;
+}
+
+.factList p {
+  font-weight: 400;
+}
+
+/* --- Spec table ---------------------------------------------------------- */
+
+.tableWrap {
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  min-width: 560px;
+  border-collapse: collapse;
+  border: var(--rule);
+  font-variant-numeric: tabular-nums;
+}
+
+.caption {
+  caption-side: bottom;
+  text-align: left;
+  padding-top: 8px;
+  font-size: 0.8125rem;
+}
+
+.table th,
+.table td {
+  padding: 8px 10px;
+  border: 2px solid var(--black);
+  text-align: left;
+}
+
+.table thead th {
+  padding: 0;
+  background: var(--black);
+}
+
+.table thead button {
+  width: 100%;
+  padding: 8px 10px;
+  border: 0;
+  background: var(--black);
+  color: var(--white);
+  font-weight: 700;
+  text-align: left;
+  cursor: pointer;
+}
+
+.table thead button:hover {
+  background: var(--orange);
+  color: var(--black);
+}
+
+.table tbody tr:hover {
+  background: var(--black);
+  color: var(--white);
+}
+
+.soldOut {
+  text-decoration: line-through;
+  color: #555;
+}
+
+/* --- Reviews ------------------------------------------------------------- */
+
+.reviewList {
+  list-style: none;
+  padding: 0;
+  max-width: 70ch;
+  margin-left: 10%;
+}
+
+.reviewList li {
+  padding: 12px 0;
+  border-top: 2px dashed var(--black);
+}
+
+.meta {
+  font-size: 0.8125rem;
+  color: #555;
+}
+
+/* --- Buy ----------------------------------------------------------------- */
+
+.buy {
+  border-bottom: var(--rule);
+}
+
+.root .buyBig {
+  display: block;
+  padding: clamp(32px, 8vw, 80px) 16px;
+  background: var(--orange);
+  color: var(--black);
+  font-family: "Times New Roman", Times, serif;
+  font-size: clamp(2.5rem, 9vw, 8rem);
+  font-weight: 700;
+  line-height: 0.9;
+  text-decoration: none;
+  border-bottom: var(--rule);
+}
+
+.root .buyBig:hover {
+  background: var(--black);
+  color: var(--orange);
+}
+
+.buyNote {
+  padding: 10px 16px;
+  font-weight: 700;
+}
+
+.footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 16px 16px 120px; /* clear of the shell's nav bar */
+  font-size: 0.8125rem;
+}
+
+/* --- Phones -------------------------------------------------------------- */
+
+@media (max-width: 760px) {
+  .hero {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .heroTitle {
+    grid-column: 1 / -1;
+    border-right: 0;
+  }
+
+  .heroDeck {
+    margin-top: 0;
+  }
+
+  .heroPrice {
+    margin-left: -12px;
+  }
+
+  .sub {
+    margin-left: 8%;
+  }
+
+  .factList li:nth-child(2) {
+    transform: translateX(16px);
+  }
+
+  .reviewList {
+    margin-left: 0;
+  }
+}
