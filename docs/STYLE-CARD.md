@@ -30,7 +30,7 @@ card need. Tags are typed against the glossary, so a typo fails the build.
 import type { ConceptMeta } from "../types";
 
 export const meta: ConceptMeta = {
-  slug: "orchard-swiss",          // URL: #/c/orchard-swiss
+  slug: "orchard-swiss",          // URL: /c/orchard-swiss
   product: "Apple",
   brand: "Orchard No. 1",
   style: "Swiss Minimal",

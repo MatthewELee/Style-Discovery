@@ -22,4 +22,4 @@ Click through the concepts one after another, or jump to any of them from the ga
 ## Stack (planned)
 
 Vite, React, TypeScript and [Motion](https://motion.dev) (the library formerly called
-Framer Motion; same API, imported from `motion/react`). Deployed to GitHub Pages.
+Framer Motion; same API, imported from `motion/react`). Deployed with Cloudflare Pages.

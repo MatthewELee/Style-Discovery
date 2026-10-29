@@ -30,4 +30,4 @@ For concept #13 and onward. One concept per branch and PR.
 - [ ] Looks right with reduced motion turned on.
 - [ ] Works at phone width (375 px) and desktop.
 - [ ] Prev/next from the neighbours lands on it; the gallery card shows it.
-- [ ] `npm run build` and lint pass.
+- [ ] `npm run build` and lint pass, and the Cloudflare preview for the PR looks right.
