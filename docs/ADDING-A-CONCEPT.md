@@ -20,6 +20,10 @@ For concept #13 and onward. One concept per branch and PR.
 - [ ] Follow the shared content outline (hero, three features, details, social proof,
       closing CTA, footer), or list the deliberate break under `rulesBroken`.
 - [ ] Draw the product in SVG/CSS (or add a properly licensed image).
+- [ ] Leave about 120 px of padding at the bottom of the page so the shell's nav bar
+      doesn't cover the footer.
+- [ ] If the page uses ← / → / Esc itself (a game, a carousel), call
+      `e.preventDefault()` in its handler so the shell doesn't also navigate.
 
 ## 3. Check
 
@@ -30,4 +34,4 @@ For concept #13 and onward. One concept per branch and PR.
 - [ ] Looks right with reduced motion turned on.
 - [ ] Works at phone width (375 px) and desktop.
 - [ ] Prev/next from the neighbours lands on it; the gallery card shows it.
-- [ ] `npm run build` and lint pass.
+- [ ] `npm run build` and lint pass, and the Cloudflare preview for the PR looks right.

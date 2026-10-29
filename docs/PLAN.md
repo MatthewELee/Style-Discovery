@@ -46,7 +46,7 @@ Each phase is one pull request for you to review before the next starts.
 | Phase | Deliverable | Done when |
 | --- | --- | --- |
 | **0. Planning** | These docs | You've approved or edited the concept list and the architecture |
-| **1. Shell** | Vite app, gallery home, concept viewer with next/prev, style card panel, auto-registry, GitHub Pages deploy, one placeholder concept | The site is live on GitHub Pages and you can click through two placeholder pages |
+| **1. Shell** | Vite app, gallery home, concept viewer with next/prev, style card panel, auto-registry, Cloudflare Pages deploy, two placeholder concepts | The site is live on Cloudflare Pages and you can click through two placeholder pages |
 | **2. Batch A** | Concepts 01–04 | Four live, finished concepts with style cards |
 | **3. Batch B** | Concepts 05–08 | Eight live |
 | **4. Batch C** | Concepts 09–12 | Twelve live |
@@ -63,8 +63,8 @@ contribution of the design obvious.
 - **Vite + React + TypeScript** (strict mode).
 - **Motion** (`motion` package, `import { motion } from "motion/react"`). This is Framer
   Motion under its current name; the API is the same.
-- **React Router** with a hash router, so deep links work on GitHub Pages without
-  server rewrites.
+- **React Router** with normal URLs (`/c/orchard-swiss`). Cloudflare Pages serves
+  `index.html` for unknown paths, so deep links work without extra config.
 - **CSS Modules** for styling, so each concept's CSS cannot leak into another.
 - **Fontsource** packages for fonts, imported inside each concept so a font only loads
   when its page is viewed.
@@ -83,8 +83,7 @@ src/
     ConceptViewer.tsx        loads a concept, page transition, keyboard nav
     NavBar.tsx               prev / next / back to gallery, "3 of 12"
     StyleCard.tsx            the "about this style" panel
-    TagChip.tsx              tag with glossary definition on hover/focus
-    shell.module.css         neutral UI that sits above every concept
+    *.module.css             neutral UI that sits above every concept
   concepts/
     registry.ts              discovers concepts automatically (see below)
     01-orchard-swiss/
@@ -94,6 +93,7 @@ src/
       assets/                SVGs etc.
     02-squeeze-y2k/
     ...
+    types.ts                 ConceptMeta, the typed meta.ts format
   content/
     glossary.ts              visual + UX terms and definitions, typed
 ```
@@ -132,6 +132,8 @@ No central list to edit.
 
 ### Tooling and deploy
 
-- ESLint + Prettier, `tsc --noEmit` in CI.
-- GitHub Actions: build on every PR; deploy `main` to GitHub Pages.
-- Vite `base: "./"` so the build works at any Pages path.
+- oxlint + Prettier; `npm run build` type-checks with `tsc -b` before bundling.
+- **Cloudflare Pages** builds and deploys: `main` goes to production, and every PR
+  branch gets its own preview URL.
+- Cloudflare settings: framework preset *Vite* (or none), build command `npm run build`,
+  output directory `dist`. Node version is pinned with `.nvmrc`.

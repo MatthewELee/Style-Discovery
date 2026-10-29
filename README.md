@@ -7,9 +7,21 @@ tags it with design and UX vocabulary, and explains how the look is achieved.
 
 Click through the concepts one after another, or jump to any of them from the gallery.
 
+## Running it
+
+```sh
+npm install
+npm run dev      # http://localhost:5173
+npm run build    # type-check and build to dist/
+npm run lint
+```
+
+Requires Node 22.12+ (see `.nvmrc`).
+
 ## Status
 
-**Planning phase.** Nothing is built yet. The plan lives in [`docs/`](docs):
+**Phase 1 (shell)** is built: gallery, next/prev viewer, style card, and two
+placeholder concepts. The plan lives in [`docs/`](docs):
 
 | Doc | What's in it |
 | --- | --- |
@@ -19,7 +31,7 @@ Click through the concepts one after another, or jump to any of them from the ga
 | [GLOSSARY.md](docs/GLOSSARY.md) | The visual and UX vocabulary used to tag every concept |
 | [ADDING-A-CONCEPT.md](docs/ADDING-A-CONCEPT.md) | Checklist for adding concept #13 and onward |
 
-## Stack (planned)
+## Stack
 
 Vite, React, TypeScript and [Motion](https://motion.dev) (the library formerly called
-Framer Motion; same API, imported from `motion/react`). Deployed to GitHub Pages.
+Framer Motion; same API, imported from `motion/react`). Deployed with Cloudflare Pages.

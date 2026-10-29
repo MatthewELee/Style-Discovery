@@ -8,7 +8,7 @@ learning layer of the site.
 
 1. **Style name** and product, e.g. *Swiss Minimal · Orchard No. 1 apples*
 2. **Description:** two or three sentences on what the style is and why it works.
-3. **Visual tags** and **UX tags** as chips. Hovering or focusing a chip shows its
+3. **Visual tags** and **UX tags** as chips. Tapping or clicking a chip shows its
    definition from the [glossary](GLOSSARY.md).
 4. **How it's built:** three to five short bullets of concrete choices, e.g.
    "One accent color, used only for the CTA and the apple."
@@ -30,7 +30,7 @@ card need. Tags are typed against the glossary, so a typo fails the build.
 import type { ConceptMeta } from "../types";
 
 export const meta: ConceptMeta = {
-  slug: "orchard-swiss",          // URL: #/c/orchard-swiss
+  slug: "orchard-swiss",          // URL: /c/orchard-swiss
   product: "Apple",
   brand: "Orchard No. 1",
   style: "Swiss Minimal",
