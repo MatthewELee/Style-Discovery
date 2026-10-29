@@ -1,0 +1,381 @@
+.root {
+  --mist: #f5f7fa;
+  --card: #ffffff;
+  --ink: #0f172a;
+  --tide: #0ea5a4;
+  --tide-dark: #0b7f7e;
+  --tint: #cdeff0;
+  --slate: #64748b;
+  --radius: 28px;
+  --gap: 14px;
+
+  min-height: 100vh;
+  background: var(--mist);
+  color: var(--ink);
+  font-family: "Manrope Variable", system-ui, sans-serif;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.root :focus-visible {
+  outline: 3px solid var(--tide);
+  outline-offset: 3px;
+}
+
+/* The four-step type scale. */
+.tileLabel {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--slate);
+}
+
+.body {
+  font-size: 1rem;
+}
+
+.tileH {
+  font-size: 1.375rem;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+.h1 {
+  font-size: clamp(2.25rem, 4.6vw, 3.75rem);
+  font-weight: 800;
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 20px clamp(16px, 3vw, 32px);
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+}
+
+.headerCta {
+  padding: 8px 18px;
+  border-radius: 999px;
+  background: var(--card);
+  color: var(--ink);
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 1px 2px rgb(15 23 42 / 8%);
+}
+
+/* --- The bento grid ------------------------------------------------------ */
+
+.bento {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-auto-rows: minmax(180px, auto);
+  grid-template-areas:
+    "hero hero bottle temp"
+    "hero hero bottle cap"
+    "colors lid reviews reviews"
+    "specs specs cta cta";
+  gap: var(--gap);
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 clamp(16px, 3vw, 32px);
+}
+
+.tile {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 12px;
+  min-width: 0;
+  padding: 22px;
+  border: 0;
+  border-radius: var(--radius);
+  background: var(--card);
+  color: inherit;
+  text-align: left;
+  font: inherit;
+  box-shadow: 0 1px 2px rgb(15 23 42 / 6%);
+  overflow: hidden;
+}
+
+button.tile {
+  cursor: pointer;
+}
+
+.tile:hover {
+  box-shadow: 0 12px 30px rgb(15 23 42 / 10%);
+}
+
+.plus {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--mist);
+  color: var(--ink);
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.heroTile {
+  padding: clamp(24px, 3vw, 40px);
+  justify-content: flex-end;
+  gap: 18px;
+  background: linear-gradient(160deg, #ffffff 40%, var(--tint) 140%);
+}
+
+.heroTile .body {
+  max-width: 44ch;
+  color: #334155;
+}
+
+.cta {
+  align-self: flex-start;
+  padding: 12px 22px;
+  border-radius: 999px;
+  background: var(--ink);
+  color: #fff;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.cta:hover {
+  background: var(--tide-dark);
+}
+
+.bottleTile {
+  align-items: center;
+  background: linear-gradient(180deg, var(--card), var(--mist));
+}
+
+.bottle {
+  width: 100%;
+  max-width: 130px;
+  height: auto;
+}
+
+.tintTile {
+  background: var(--tint);
+}
+
+.tintTile .tileLabel {
+  color: #36506a;
+}
+
+.big {
+  font-size: 2.5rem;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+.small {
+  display: block;
+  margin-top: 4px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0;
+  color: #36506a;
+}
+
+.iceGlass {
+  position: relative;
+  height: 56px;
+  border-radius: 14px;
+  overflow: hidden;
+  background: rgb(255 255 255 / 55%);
+}
+
+.water {
+  position: absolute;
+  inset: 22px 0 0;
+  background: rgb(14 165 164 / 22%);
+}
+
+.cube {
+  position: absolute;
+  top: 12px;
+  width: 22px;
+  height: 22px;
+  border-radius: 5px;
+  background: rgb(255 255 255 / 90%);
+  box-shadow: inset -3px -3px 0 rgb(14 165 164 / 20%);
+  z-index: 1;
+}
+
+.segmented {
+  display: flex;
+  padding: 4px;
+  border-radius: 999px;
+  background: var(--mist);
+}
+
+.segmented button {
+  flex: 1;
+  padding: 8px 4px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  font-weight: 600;
+  font-size: 0.875rem;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.segmented button[aria-pressed="true"] {
+  background: var(--card);
+  box-shadow: 0 1px 3px rgb(15 23 42 / 15%);
+}
+
+.swatches {
+  display: flex;
+  gap: 10px;
+}
+
+.swatch {
+  width: 36px;
+  height: 36px;
+  border: 0;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.swatch[aria-pressed="true"] {
+  box-shadow:
+    0 0 0 3px var(--card),
+    0 0 0 5px var(--ink);
+}
+
+.specList {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px 16px;
+  font-weight: 600;
+}
+
+.ctaTile {
+  background: var(--ink);
+  color: #fff;
+}
+
+.ctaTile .tileLabel {
+  color: #a5b4c8;
+}
+
+.buyRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.ctaLight {
+  padding: 14px 24px;
+  border-radius: 999px;
+  background: var(--tide);
+  color: var(--ink);
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.ctaLight:hover {
+  background: #fff;
+}
+
+/* --- Expanded tile ------------------------------------------------------- */
+
+.scrim {
+  position: fixed;
+  inset: 0;
+  z-index: 900;
+  background: rgb(15 23 42 / 35%);
+}
+
+.expanded {
+  position: fixed;
+  z-index: 901;
+  inset: 0;
+  margin: auto;
+  width: min(560px, calc(100% - 32px));
+  height: fit-content;
+  max-height: calc(100% - 140px);
+  overflow-y: auto;
+  padding: 32px;
+  border-radius: var(--radius);
+  background: var(--card);
+  box-shadow: 0 30px 80px rgb(15 23 42 / 30%);
+}
+
+.h2 {
+  margin: 8px 0 16px;
+  font-size: 1.875rem;
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.detailList {
+  display: grid;
+  gap: 10px;
+  padding-left: 20px;
+  margin-bottom: 24px;
+}
+
+.close {
+  padding: 10px 20px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--mist);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.footer {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 28px clamp(16px, 3vw, 32px) 120px; /* clear of the shell's nav bar */
+  font-size: 0.875rem;
+  color: var(--slate);
+}
+
+/* --- Smaller screens ----------------------------------------------------- */
+
+@media (max-width: 900px) {
+  .bento {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-areas:
+      "hero hero"
+      "bottle temp"
+      "bottle cap"
+      "colors lid"
+      "reviews reviews"
+      "specs specs"
+      "cta cta";
+  }
+}
+
+@media (max-width: 480px) {
+  .bento {
+    grid-auto-rows: minmax(150px, auto);
+  }
+
+  .specList {
+    grid-template-columns: 1fr;
+  }
+}

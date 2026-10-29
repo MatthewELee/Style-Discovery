@@ -20,8 +20,8 @@ Requires Node 22.12+ (see `.nvmrc`).
 
 ## Status
 
-The gallery shell is built, and the 12 concepts in [CONCEPTS.md](docs/CONCEPTS.md) are
-being added in batches of four. The plan lives in [`docs/`](docs):
+The gallery shell and all 12 concepts in [CONCEPTS.md](docs/CONCEPTS.md) are built.
+New styles come from the backlog at the end of that file. The plan lives in [`docs/`](docs):
 
 | Doc | What's in it |
 | --- | --- |

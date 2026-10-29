@@ -1,0 +1,370 @@
+.root {
+  --paper: #f6eedc;
+  --honey: #e3a72f;
+  --comb: #8a5a1f;
+  --leaf: #5a6a3d;
+  --ink: #2f2a24;
+  --hand: "Caveat Variable", "Segoe Print", cursive;
+  /* The classic hand-drawn box: four very uneven corner radii. */
+  --wobbly: 255px 15px 225px 15px / 15px 225px 15px 255px;
+
+  position: relative;
+  min-height: 100vh;
+  overflow-x: clip;
+  background-color: var(--paper);
+  /* Faint paper fibres from a couple of soft gradients. */
+  background-image:
+    radial-gradient(circle at 20% 10%, rgb(227 167 47 / 10%), transparent 40%),
+    radial-gradient(circle at 80% 60%, rgb(90 106 61 / 8%), transparent 45%);
+  color: var(--ink);
+  font-family: "Lora Variable", Georgia, serif;
+  font-size: 1.125rem;
+  line-height: 1.65;
+}
+
+.root :focus-visible {
+  outline: 2px dashed var(--comb);
+  outline-offset: 4px;
+}
+
+.root svg path,
+.root svg ellipse {
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 16px;
+  padding: 24px clamp(16px, 6vw, 72px);
+}
+
+.logo {
+  font-family: var(--hand);
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--comb);
+  line-height: 1;
+}
+
+.tag {
+  font-family: var(--hand);
+  font-size: 1.375rem;
+  color: var(--leaf);
+}
+
+/* --- Hero ---------------------------------------------------------------- */
+
+.hero {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  align-items: center;
+  gap: clamp(24px, 5vw, 72px);
+  padding: 24px clamp(16px, 6vw, 72px) 40px;
+}
+
+.heroArt {
+  position: relative;
+  justify-self: center;
+  width: min(300px, 80%);
+}
+
+.jar {
+  width: 100%;
+  height: auto;
+}
+
+.jar path:nth-child(3) {
+  fill: rgb(227 167 47 / 35%);
+}
+
+.noteJar {
+  position: absolute;
+  right: -30%;
+  top: 6%;
+  font-family: var(--hand);
+  font-size: 1.5rem;
+  color: var(--comb);
+  transform: rotate(-6deg);
+}
+
+.h1 {
+  font-family: var(--hand);
+  font-size: clamp(3rem, 7vw, 5.5rem);
+  font-weight: 700;
+  line-height: 0.95;
+  color: var(--ink);
+  margin-bottom: 20px;
+}
+
+.lede {
+  max-width: 46ch;
+  margin-bottom: 28px;
+}
+
+.cta {
+  display: inline-block;
+  padding: 12px 26px;
+  border: 2.5px solid var(--ink);
+  border-radius: var(--wobbly);
+  background: var(--honey);
+  color: var(--ink);
+  font-family: var(--hand);
+  font-size: 1.625rem;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 3px 4px 0 var(--ink);
+  transition: transform 200ms ease;
+}
+
+.cta:hover {
+  transform: rotate(-1.5deg) translateY(-2px);
+}
+
+/* The bee follows a looping path across the hero. */
+.bee {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 40px;
+  offset-path: path(
+    "M 120 120 C 320 -20, 520 260, 760 120 S 1100 40, 980 220 S 500 300, 120 120"
+  );
+  offset-rotate: auto;
+  animation: fly 14s linear infinite;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.bee svg {
+  width: 100%;
+}
+
+.root .beeBody {
+  fill: var(--honey);
+}
+
+@keyframes fly {
+  to {
+    offset-distance: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bee {
+    animation: none;
+    offset-distance: 30%;
+  }
+}
+
+.meadow {
+  position: relative;
+  height: 90px;
+  border-bottom: 2.5px solid var(--leaf);
+  border-radius: 0 0 50% 50% / 0 0 8px 8px;
+}
+
+.swayFlower {
+  position: absolute;
+  bottom: -4px;
+  width: 64px;
+}
+
+.root .swayFlower path {
+  stroke: var(--leaf);
+}
+
+.root .swayFlower path:nth-child(2) {
+  fill: var(--honey);
+  stroke: var(--comb);
+}
+
+/* --- Features ------------------------------------------------------------ */
+
+.features,
+.proof,
+.buy {
+  padding: 72px clamp(16px, 6vw, 72px);
+}
+
+.h2 {
+  font-family: var(--hand);
+  font-size: clamp(2.5rem, 5vw, 3.75rem);
+  font-weight: 700;
+  line-height: 1;
+  color: var(--comb);
+  margin-bottom: 32px;
+}
+
+.notes {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+  gap: 40px;
+}
+
+.doodle {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 8px;
+}
+
+.h3 {
+  font-family: var(--hand);
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+/* --- Hive & notebook ----------------------------------------------------- */
+
+.hiveSection {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  align-items: center;
+  gap: clamp(24px, 5vw, 72px);
+  padding: 72px clamp(16px, 6vw, 72px);
+}
+
+.hive {
+  width: 100%;
+  max-width: 380px;
+  height: auto;
+  margin: 0 auto;
+}
+
+.root .hive path {
+  stroke: var(--comb);
+  stroke-width: 2.6;
+}
+
+.notebook {
+  padding: 32px 28px;
+  border: 2px solid var(--ink);
+  border-radius: 6px 18px 8px 22px / 20px 6px 18px 8px;
+  background-color: #fffaf0;
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent 0 calc(1.65em - 1px),
+    rgb(90 106 61 / 30%) calc(1.65em - 1px) 1.65em
+  );
+  background-position: 0 2.2em;
+  box-shadow: 4px 5px 0 rgb(47 42 36 / 15%);
+}
+
+.steps {
+  padding-left: 1.4em;
+  display: grid;
+  gap: 0;
+  margin-bottom: 16px;
+}
+
+.margin {
+  font-family: var(--hand);
+  font-size: 1.5rem;
+  line-height: 1.2;
+  color: var(--comb);
+  transform: rotate(-1.5deg);
+  margin-bottom: 20px;
+}
+
+.facts {
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 32px;
+}
+
+.facts dt {
+  font-family: var(--hand);
+  font-size: 1.25rem;
+  color: var(--leaf);
+}
+
+.facts dd {
+  margin: 0;
+  font-weight: 600;
+}
+
+/* --- Proof: taped sticky notes ------------------------------------------- */
+
+.proof {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+}
+
+.sticky {
+  position: relative;
+  max-width: 340px;
+  padding: 32px 26px 22px;
+  background: #fde9a6;
+  box-shadow: 2px 6px 12px rgb(47 42 36 / 15%);
+  font-family: var(--hand);
+  font-size: 1.625rem;
+  line-height: 1.2;
+}
+
+.sticky::before {
+  content: "";
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  width: 90px;
+  height: 26px;
+  margin-left: -45px;
+  background: rgb(255 255 255 / 55%);
+  transform: rotate(-3deg);
+}
+
+.sticky:nth-child(2) {
+  background: #e3ebcf;
+}
+
+.sticky footer {
+  margin-top: 12px;
+  font-size: 1.25rem;
+  color: var(--comb);
+}
+
+.buy {
+  display: grid;
+  justify-items: center;
+  gap: 12px;
+  text-align: center;
+}
+
+.buy p {
+  margin-bottom: 16px;
+}
+
+.footer {
+  padding: 24px 16px 120px; /* clear of the shell's nav bar */
+  text-align: center;
+  font-family: var(--hand);
+  font-size: 1.375rem;
+  color: var(--leaf);
+}
+
+@media (max-width: 760px) {
+  .hero,
+  .hiveSection {
+    grid-template-columns: 1fr;
+  }
+
+  .noteJar {
+    right: -18%;
+  }
+
+  .bee {
+    offset-path: path("M 60 60 C 160 -20, 260 140, 330 60 S 300 260, 60 60");
+  }
+}

@@ -212,7 +212,7 @@ Batch A (01–04) covers the widest spread first: strict, loud, raw and quiet.
 
 - **Visual tags:** Muted, Cohesive, Airy
 - **UX tags:** User-centric, Scannable
-- **Palette:** paper `#F6EEDC` · honey `#E3A72F` · comb `#8A5A1F` · leaf `#6E7F4E` · ink
+- **Palette:** paper `#F6EEDC` · honey `#E3A72F` · comb `#8A5A1F` · leaf `#5A6A3D` · ink
   `#2F2A24`
 - **Type:** Caveat for headings and annotations, Lora for body.
 - **Layout:** Freeform. Hand-drawn SVG illustrations, wobbly borders, handwritten notes and
