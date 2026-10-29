@@ -42,11 +42,7 @@ function Count({ to }: { to: number }) {
   const [n, setN] = useState(0);
 
   useEffect(() => {
-    if (!inView) return;
-    if (reduce) {
-      setN(to);
-      return;
-    }
+    if (!inView || reduce) return;
     const controls = animate(0, to, {
       duration: 0.9,
       ease,
@@ -55,7 +51,8 @@ function Count({ to }: { to: number }) {
     return () => controls.stop();
   }, [inView, reduce, to]);
 
-  return <span ref={ref}>{n}</span>;
+  // With reduced motion, skip the count and show the final figure.
+  return <span ref={ref}>{reduce ? to : n}</span>;
 }
 
 /** The apple, built from plain geometry so it sits on the grid like everything else. */
